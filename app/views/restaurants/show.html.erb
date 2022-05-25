@@ -15,5 +15,16 @@
   <%= @restaurant.stars %>
 </p>
 
+<div>
+  <% @restaurant.reviews.each do |review| %>
+    <div class="d-flex">
+      <p><%= review.content %> </p>
+      <%= link_to 'Delete this review', review_path(review), method: 'DELETE', data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %> |
+<%= link_to 'Chef info', chef_restaurant_path(@restaurant) %>
 <%= link_to 'Back', restaurants_path %>
